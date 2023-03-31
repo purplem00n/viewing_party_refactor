@@ -48,7 +48,7 @@ def test_no_duplicate_friends_added():
 # Part 3
 # ---------------
 
-def test_add_movie_to_watchlist():
+def test_add_movie_to_watchlist_adds_movie():
     #Arrange
     moyo = Person("Moyo", ["Sarah"])
     #Act
@@ -65,3 +65,19 @@ def test_no_duplicate_movies_added_to_watchlist():
     #Assert
     assert moyo.watchlist == ["matrix"]
 
+def test_add_to_watched_adds_movie():
+    #Arrange
+    moyo = Person("Moyo", ["Sarah"])
+    #Act
+    moyo.add_to_watched("matrix")
+    #Assert
+    assert moyo.watched == ["matrix"]
+
+def test_no_duplicate_movies_added_to_watched():
+    #Arrange
+    moyo = Person("Moyo", ["Sarah"])
+    #Act
+    moyo.add_to_watched("matrix")
+    moyo.add_to_watched("matrix")
+    #Assert
+    assert moyo.watched == ["matrix"]
