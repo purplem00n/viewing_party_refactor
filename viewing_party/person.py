@@ -20,3 +20,12 @@ class Person:
             self.watched.append(movie)
         if movie in self.watchlist:
             self.watchlist.remove(movie)
+
+    def user_unique_watched(self):
+        friends_watched = []
+        for friend in self.friends:
+            friends_watched.extend(friend.watched)
+        user_unique_watched = set(self.watched) - set(friends_watched)
+        return list(user_unique_watched)
+    # this doesn't work because friend in friend.watched is a string of that 
+    # friends name, not the object.

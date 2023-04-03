@@ -81,3 +81,22 @@ def test_no_duplicate_movies_added_to_watched():
     moyo.add_to_watched("matrix")
     #Assert
     assert moyo.watched == ["matrix"]
+
+
+# --------------
+# user unique watched
+# ---------------
+# I don't know how we reference friends' data
+
+def test_user_unique_watched_returns_list():
+    # Arrange
+    ariel = Person("Ariel", [])
+    moyo = Person("Moyo", [ariel])
+    ariel.add_friend(moyo)
+    ariel.add_to_watched("matrix")
+    ariel.add_to_watched("mulan")
+    moyo.add_to_watched("matrix")
+    # Act
+    result = ariel.user_unique_watched()
+    # Assert
+    assert result == ["mulan"]
